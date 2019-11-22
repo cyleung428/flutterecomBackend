@@ -21,7 +21,13 @@ const userSchema = new mongoose.Schema({
     date:{
         type:Date,
         default: Date.now
-    }
+    },
+    gender: {
+        type:String,
+        required:true,
+        max: 10,
+        min: 1
+    },
 });
 
 
