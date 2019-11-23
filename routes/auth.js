@@ -8,7 +8,7 @@ const getExpiryDate = () => {
     const exp = Math.floor(Date.now() / 1000) + 60 * 60;
     return exp;
   };
-  
+
 
 router.post('/register', async (req, res) => {
 
@@ -67,7 +67,7 @@ router.post('/login', async (req, res) => {
     }
 
     //Create and assign a token
-    const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET)
+    const token = jwt.sign({ _id: user._id,role: user.role,expiryDate:getExpiryDate()}, process.env.TOKEN_SECRET)
     result.result = true;
     result.token = token;
     result.id = user._id;

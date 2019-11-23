@@ -28,6 +28,10 @@ const userSchema = new mongoose.Schema({
         max: 10,
         min: 1
     },
+    role: {
+        type:String,
+        default: "customer",
+    },
 });
 
 
