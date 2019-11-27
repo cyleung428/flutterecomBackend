@@ -15,7 +15,7 @@ router.post('/addCategory', auth, async (req, res) => {
     //Check if the user is already in the database
     const nameExist = await Category.findOne({ name: req.body.name });
     if (nameExist) {
-        
+
         result.error = 'Category name already exists';
         result.result = false;
         return res.status(400).send(result);
@@ -33,4 +33,18 @@ router.post('/addCategory', auth, async (req, res) => {
         res.status(400).send(err);
     }
 });
+
+router.get('/getCategory', auth, async (req, res) => {
+    let result = {};
+    try {
+        const categories = await Category.find({});
+        result.result = true;
+        result.categories = categories;
+        return res.status(200).send(result);
+    }
+    catch (err) {
+        res.status(400).send(err);
+    }
+});
+
 module.exports = router;
