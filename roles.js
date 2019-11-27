@@ -1,4 +1,4 @@
 module.exports={
-    admin: ["/api/addProducts"],
+    admin: ["/api/product/addProduct","/api/category/addCategory"],
     customer: ["/api/products"]
     }
