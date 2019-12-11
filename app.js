@@ -19,8 +19,7 @@ mongoose.connect(
 app.use(express.json());
 
 app.use('/api/user', authRoute);
-app.use('/api/products', productRoute);
-app.use('/api/category', categoryRoute);
-app.use('/api/product',productRoute);
+app.use('/api', categoryRoute);
+app.use('/api',productRoute);
 
 app.listen(3000, console.log(`Server started`));

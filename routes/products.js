@@ -5,7 +5,7 @@ const Product = require('../model/Product');
 const { addProductValidation } = require('../validation');
 
 //TODO: Add product API
-router.post('/addProduct', auth, async (req, res) => {
+router.post('/product', auth, async (req, res) => {
     const { error } = addProductValidation(req.body);
     let result = {};
     if (error) {
@@ -37,6 +37,19 @@ router.post('/addProduct', auth, async (req, res) => {
     } catch (e) {
         result.error = "No such category";
         res.status(400).send(result);
+    }
+});
+
+router.get('/product', auth, async (req, res) => {
+    let result = {};
+    try {
+        const products = await Product.find({});
+        result.result = true;
+        result.products = products;
+        return res.status(200).send(result);
+    }
+    catch (err) {
+        res.status(400).send(err);
     }
 });
 module.exports = router;

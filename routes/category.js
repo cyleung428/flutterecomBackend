@@ -3,7 +3,7 @@ const auth = require('./verifyToken');
 const Category = require('../model/Category');
 const { addCategoryValidation } = require('../validation');
 
-router.post('/addCategory', auth, async (req, res) => {
+router.post('/category', auth, async (req, res) => {
     const { error } = addCategoryValidation(req.body);
     let result = {};
     if (error) {
@@ -34,7 +34,7 @@ router.post('/addCategory', auth, async (req, res) => {
     }
 });
 
-router.get('/getCategory', auth, async (req, res) => {
+router.get('/category', auth, async (req, res) => {
     let result = {};
     try {
         const categories = await Category.find({});
